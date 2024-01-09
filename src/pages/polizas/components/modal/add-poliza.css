@@ -1,0 +1,9 @@
+.container-add {
+  padding: 1rem;
+}
+
+.container-add form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

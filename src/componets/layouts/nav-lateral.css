@@ -1,0 +1,21 @@
+.lateral-menu {
+  grid-area: nav;
+  background-color: #008F8C;
+}
+
+.lateral-menu ul {
+  list-style: none;
+}
+
+.lateral-menu ul li a {
+  text-decoration: none;
+  color: #D8FFDB;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.lateral-menu ul li a img {
+  height: 20px;
+}

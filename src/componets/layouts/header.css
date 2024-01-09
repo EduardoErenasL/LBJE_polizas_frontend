@@ -1,0 +1,30 @@
+.wrapper-header { 
+  grid-area: head;
+  background-color: #015958;
+  color: #D8FFDB;
+  box-shadow: 0px 3px 6px #00000029;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  z-index: 100;
+}
+
+.wrapper-header .logo {
+  height: 40px;
+}
+
+.wrapper-header .logo img {
+  object-fit: cover;
+  height: 100%;
+}
+
+.wrapper-header .usuario {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.wrapper-header .usuario img {
+  height: 40px;
+}

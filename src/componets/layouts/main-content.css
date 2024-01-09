@@ -1,0 +1,5 @@
+.wrapper-layout > main {
+  grid-area: main;
+  background-color: #ffffff;
+  padding: 1rem;
+}

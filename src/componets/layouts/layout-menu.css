@@ -1,0 +1,8 @@
+.wrapper-layout {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-areas: 'head head' 'nav main' 'nav main';
+  grid-auto-rows: 60px auto;
+  grid-template-columns: 200px auto;
+}

@@ -1,0 +1,34 @@
+.item-option-table {
+  cursor: pointer;
+  font-size: 20px;
+  padding: 0.2rem;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 3px 0 #00000085;
+  border-radius: 6px;
+}
+.item-option-table:hover {
+  background-color: rgba(0,0,0,.05);
+}
+.item-option-table.azul ion-icon {
+  color: #007bff;
+}
+
+.item-option-table.azul:hover {
+  background-color: #007bff;
+}
+
+.item-option-table.azul:hover ion-icon {
+  color: #f1f1f1;
+}
+
+.item-option-table.rojo ion-icon {
+  color: #dc3545;
+}
+
+.item-option-table.rojo:hover {
+  background-color: #dc3545;
+}
+
+.item-option-table.rojo:hover ion-icon {
+  color: #f1f1f1;
+}

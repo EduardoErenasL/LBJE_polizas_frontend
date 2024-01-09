@@ -1,0 +1,108 @@
+.modal {
+	position: fixed;
+  display: flex;
+	top: 0;
+	left: 0;
+  width: 100%;
+  height: 100%;
+	z-index: 999;
+  background: rgba(0,0,0,0.1);
+  
+}
+
+.modal > .mask {
+  background: rgba(0,0,0,0.1);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(12px);
+}
+
+.modal > .content-modal {
+	min-width: 400px;
+	position: relative;
+	margin: auto;
+	border-radius: 0.5rem;
+	background: #ffffff;
+  -webkit-transition: opacity 400ms ease-in;
+  -moz-transition: opacity 400ms ease-in;
+  transition: opacity 400ms ease-in;
+  -webkit-animation-name: introModal; /* Chrome, Safari, Opera */
+  -webkit-animation-duration: 0.5s; /* Chrome, Safari, Opera */
+  animation-name: introModal;
+  animation-duration: 0.5s;
+  height: min-content;
+  box-shadow: 0px 3px 6px #00000029;
+}
+
+@-webkit-keyframes introModal {
+  from {
+    top:-500px;
+    opacity: 0;
+  }
+  to {
+    top:0px;
+    opacity:1;
+  }
+}
+
+@keyframes introModal {
+  from {
+    top:-500px;
+    opacity: 0;
+  }
+  to {
+    top:0px;
+    opacity:1;
+  }
+}
+
+.head-modal {
+  position: relative;
+  padding: 1rem;
+  border-bottom: 1px solid #1C393F45;
+}
+
+.head-modal > h2 {
+  font-size: 20px;
+}
+
+.btn.btn-clean.close-modal {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  box-shadow: 0px 3px 6px #00000029;
+  position: absolute;
+  top: 0.7rem;
+  right: 1rem;
+}
+
+.btn.btn-clean.close-modal:hover {
+ background-color: #616161;
+
+}
+
+.btn.btn-clean.close-modal span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.btn.btn-clean.close-modal span ion-icon {
+  font-size: 25px;
+  color: #616161;
+}
+
+.btn.btn-clean.close-modal:hover span ion-icon {
+  color: #fafafa;
+}
+
+.footer-modal {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  border-top: 1px solid #1C393F45;
+}
