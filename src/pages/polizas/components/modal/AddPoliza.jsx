@@ -8,8 +8,8 @@ import { useCatEmpleados } from '../../hooks/useCatEmpleados.js'
 
 import './add-poliza.css'
 
-export default function AddPoliza ({ flagAddPoliza, poliza }) {
-  if (!flagAddPoliza) {
+export default function AddPoliza ({ show, poliza }) {
+  if (!show) {
     return null
   }
 

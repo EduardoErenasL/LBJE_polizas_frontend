@@ -94,10 +94,13 @@ export const deletePoliza = async ({ id }) => {
       mode: 'cors'
     })
 
-    const json = await response.json()
+    if (response.ok) {
+      return true
+    }
 
-    return json
+    return false
   } catch (error) {
+    console.log(error)
     throw new Error('Error al eliminar poliza')
   }
 }

@@ -41,7 +41,7 @@ export default function Polizas () {
 
       <Agregador handleClickAdd={showAddPolizas} />
 
-      <AddPoliza flagAddPoliza={showAdd} poliza={polizaSelected} />
+      <AddPoliza show={showAdd} poliza={polizaSelected} />
 
       <EliminarPoliza show={showDeleteModal} identificador={polizaDeleteSelected?.id} />
 
