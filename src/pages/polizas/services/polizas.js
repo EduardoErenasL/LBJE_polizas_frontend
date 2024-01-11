@@ -1,8 +1,6 @@
 // const API_POLIZAS = 'http://10.59.29.9:9000/polizas'
 const API_POLIZAS = import.meta.env.VITE_API_POLIZAS
 
-console.log(import.meta.env.VITE_API_POLIZAS)
-
 const HEADER_BASE = {
   'Content-Type': 'application/json',
   'Access-Control-Allow-Origin': '*',
@@ -57,9 +55,12 @@ export const postPoliza = async ({ poliza }) => {
       mode: 'cors'
     })
 
-    const json = await response.json()
-
-    return json
+    if (response.ok) {
+      const json = await response.json()
+      return json
+    } else {
+      throw new Error('Error al crear poliza')
+    }
   } catch (error) {
     throw new Error('Error al crear poliza')
   }
@@ -76,9 +77,12 @@ export const updatePoliza = async ({ poliza }) => {
       mode: 'cors'
     })
 
-    const json = await response.json()
-
-    return json
+    if (response.ok) {
+      const json = await response.json()
+      return json
+    } else {
+      throw new Error('Error al crear poliza')
+    }
   } catch (error) {
     throw new Error('Error al actualizar poliza')
   }

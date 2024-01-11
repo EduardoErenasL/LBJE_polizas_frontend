@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 import { usePolizas } from '../hooks/usePolizas.js'
 import { useModalPoliza } from '../hooks/useModalPoliza.js'
-import { useDeleteModalPoliza } from '../hooks/useDeleteModalPoliza.js'
+import { useDeleteModalPoliza } from '../hooks/delete/useDeleteModalPoliza.js'
 
 export const PolizasContex = createContext()
 

@@ -4,11 +4,7 @@ import LoadBars from '../../../../componets/loads/LoadBars'
 import { useConfirmationDelete } from '../../hooks/delete/useConfirmationDelete'
 import './eliminar-poliza.css'
 
-export default function EliminarPoliza ({ show, identificador }) {
-  if (!show) {
-    return null
-  }
-
+export default function EliminarPoliza ({ identificador }) {
   const { deactiveDeleteModal, handleClickAcept, showLoad } = useConfirmationDelete({ identificador })
 
   const configModalDelete = {

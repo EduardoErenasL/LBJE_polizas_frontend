@@ -5,14 +5,13 @@ import GroupControl from '../../../../componets/forms/GroupControl.jsx'
 
 import { useFormPoliza } from '../../hooks/useFormPoliza.js'
 import { useCatEmpleados } from '../../hooks/useCatEmpleados.js'
+import { useCatInventarios } from '../../hooks/useCatInventarios.js'
+
+import LoadBars from '../../../../componets/loads/LoadBars.jsx'
 
 import './add-poliza.css'
 
-export default function AddPoliza ({ show, poliza }) {
-  if (!show) {
-    return null
-  }
-
+export default function AddPoliza ({ poliza }) {
   const configModalAdd = {
     title: poliza ? 'Modificar poliza' : 'Agregar poliza',
     titleAbort: 'Cancelar',
@@ -21,53 +20,66 @@ export default function AddPoliza ({ show, poliza }) {
 
   const {
     empleado, inventario, cantidad, fecha, closeModal, handleChangeEmpleado, handleChangeInventario,
-    handleChangeCantidad, handleChangeFecha, handleSubmitForm
+    handleChangeCantidad, handleChangeFecha, handleSubmitForm, showLoad
   } = useFormPoliza(poliza)
 
   const { empleados, obtenerEmpleados } = useCatEmpleados()
 
+  const { inventarios, obtenerInventarios } = useCatInventarios()
+
   useEffect(() => {
     obtenerEmpleados()
+    obtenerInventarios()
   }, [])
 
   return (
-    <Modal config={configModalAdd} close={closeModal} abort={closeModal} acept={handleSubmitForm}>
-      <main className='container-add'>
-        <form onSubmit={handleSubmitForm}>
-          <GroupControl label='Empleado' error='' flagError={false}>
-            <select name='empleadoPoliza' className='control' value={empleado} onChange={handleChangeEmpleado}>
-              <option value='-1'>Seleccionar empleado</option>
-              {empleados && empleados.map((empleado) => {
-                return (
-                  <option key={empleado.id} value={empleado.id}>{`${empleado.nombre} ${empleado.apellido}`}</option>
-                )
-              })}
-            </select>
-          </GroupControl>
 
-          <GroupControl label='Inventario' error='' flagError={false}>
-            <input
-              type='number' name='inventarioPoliza' value={inventario} onChange={handleChangeInventario}
-              className='control' placeholder='Ingrese Inventario'
-            />
-          </GroupControl>
+    <>
+      {!showLoad &&
+        <Modal config={configModalAdd} close={closeModal} abort={closeModal} acept={handleSubmitForm}>
+          <main className='container-add'>
+            <form onSubmit={handleSubmitForm}>
+              <GroupControl label='Empleado' error='' flagError={false}>
+                <select name='empleadoPoliza' className='control' value={empleado} onChange={handleChangeEmpleado}>
+                  <option value='-1'>Seleccionar empleado</option>
+                  {empleados && empleados.map((empleado) => {
+                    return (
+                      <option key={empleado.id} value={empleado.id}>{`${empleado.nombre} ${empleado.apellido}`}</option>
+                    )
+                  })}
+                </select>
+              </GroupControl>
 
-          <GroupControl label='Cantidad' error='' flagError={false}>
-            <input
-              type='number' name='cantidadPoliza' value={cantidad} onChange={handleChangeCantidad}
-              className='control' placeholder='Ingrese Cantidad'
-            />
-          </GroupControl>
+              <GroupControl label='Inventario' error='' flagError={false}>
+                <select name='inventarioPoliza' className='control' value={inventario} onChange={handleChangeInventario}>
+                  <option value='-1'>Seleccionar empleado</option>
+                  {inventarios && inventarios.map((inventario) => {
+                    return (
+                      <option key={inventario.id} value={inventario.id}>{`${inventario.id} - Articulo: ${inventario.articulo}`}</option>
+                    )
+                  })}
+                </select>
+              </GroupControl>
 
-          <GroupControl label='Fecha' error='' flagError={false}>
-            <input
-              type='date' name='fechaPoliza' value={fecha} onChange={handleChangeFecha}
-              className='control' placeholder='Ingrese Fecha'
-            />
-          </GroupControl>
+              <GroupControl label='Cantidad' error='' flagError={false}>
+                <input
+                  type='number' name='cantidadPoliza' value={cantidad} onChange={handleChangeCantidad}
+                  className='control' placeholder='Ingrese Cantidad'
+                />
+              </GroupControl>
 
-        </form>
-      </main>
-    </Modal>
+              <GroupControl label='Fecha' error='' flagError={false}>
+                <input
+                  type='date' name='fechaPoliza' value={fecha} onChange={handleChangeFecha}
+                  className='control' placeholder='Ingrese Fecha'
+                />
+              </GroupControl>
+
+            </form>
+          </main>
+        </Modal>}
+
+      {showLoad && <LoadBars />}
+    </>
   )
 }
