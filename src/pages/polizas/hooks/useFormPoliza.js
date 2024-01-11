@@ -9,7 +9,7 @@ export const useFormPoliza = (poliza) => {
   const { closeAddPoliza, obtenerPolizas } = useContext(PolizasContex)
   const [empleado, setEmpleado] = useState(poliza?.empleado ? poliza.empleado : '')
   const [inventario, setInventario] = useState(poliza?.inventario ? poliza.inventario : '')
-  const [cantidad, setCantidad] = useState(poliza?.cantidad ? poliza.cantidad : '')
+  const [cantidad, setCantidad] = useState(poliza?.cantidad != null ? poliza.cantidad : '')
   const [fecha, setFecha] = useState(poliza?.fecha ? poliza.fecha : '')
   const [showLoad, setShowLoad] = useState(false)
 
