@@ -37,6 +37,7 @@ export default function Polizas () {
             )
           })}
         </TableBase>
+        {!polizas && <p>Sin resultados en la busqueda</p>}
       </section>
 
       <Agregador handleClickAdd={showAddPolizas} />

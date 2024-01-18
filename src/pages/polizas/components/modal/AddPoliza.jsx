@@ -19,8 +19,9 @@ export default function AddPoliza ({ poliza }) {
   }
 
   const {
-    empleado, inventario, cantidad, fecha, closeModal, handleChangeEmpleado, handleChangeInventario,
-    handleChangeCantidad, handleChangeFecha, handleSubmitForm, showLoad
+    empleado, errorEmpleado, inventario, errorInventario, cantidad, errorCantidad, fecha, errorFecha, closeModal,
+    handleChangeEmpleado, handleChangeInventario, handleChangeCantidad, handleChangeFecha, handleSubmitForm,
+    showLoad
   } = useFormPoliza(poliza)
 
   const { empleados, obtenerEmpleados } = useCatEmpleados()
@@ -39,9 +40,9 @@ export default function AddPoliza ({ poliza }) {
         <Modal config={configModalAdd} close={closeModal} abort={closeModal} acept={handleSubmitForm}>
           <main className='container-add'>
             <form onSubmit={handleSubmitForm}>
-              <GroupControl label='Empleado' error='' flagError={false}>
+              <GroupControl label='Empleado' error={errorEmpleado.error} flagError={errorEmpleado.show}>
                 <select name='empleadoPoliza' className='control' value={empleado} onChange={handleChangeEmpleado}>
-                  <option value='-1'>Seleccionar empleado</option>
+                  <option value='-1' disabled>Seleccionar empleado</option>
                   {empleados && empleados.map((empleado) => {
                     return (
                       <option key={empleado.id} value={empleado.id}>{`${empleado.nombre} ${empleado.apellido}`}</option>
@@ -50,7 +51,7 @@ export default function AddPoliza ({ poliza }) {
                 </select>
               </GroupControl>
 
-              <GroupControl label='Inventario' error='' flagError={false}>
+              <GroupControl label='Inventario' error={errorInventario.error} flagError={errorInventario.show}>
                 <select name='inventarioPoliza' className='control' value={inventario} onChange={handleChangeInventario}>
                   <option value='-1'>Seleccionar empleado</option>
                   {inventarios && inventarios.map((inventario) => {
@@ -61,14 +62,14 @@ export default function AddPoliza ({ poliza }) {
                 </select>
               </GroupControl>
 
-              <GroupControl label='Cantidad' error='' flagError={false}>
+              <GroupControl label='Cantidad' error={errorCantidad.error} flagError={errorCantidad.show}>
                 <input
                   type='number' name='cantidadPoliza' value={cantidad} onChange={handleChangeCantidad}
                   className='control' placeholder='Ingrese Cantidad'
                 />
               </GroupControl>
 
-              <GroupControl label='Fecha' error='' flagError={false}>
+              <GroupControl label='Fecha' error={errorFecha.error} flagError={errorFecha.show}>
                 <input
                   type='date' name='fechaPoliza' value={fecha} onChange={handleChangeFecha}
                   className='control' placeholder='Ingrese Fecha'
