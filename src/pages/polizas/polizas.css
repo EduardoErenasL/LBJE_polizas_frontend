@@ -2,3 +2,17 @@
   width: 100%;
   margin-bottom: 20px;
 }
+
+
+.sin-resultados {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  min-height: 100px;
+}
+
+.sin-resultados p {
+  font-size: 1.1rem;
+  font-weight: 600;
+}

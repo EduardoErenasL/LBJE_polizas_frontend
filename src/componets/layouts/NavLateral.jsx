@@ -19,13 +19,19 @@ export default function NavLateral () {
         <li>
           <NavLink to='/inventario'>
             <img src={inventario} alt='logo inventario' />
-            <span>Inventario</span>
+            <span>Inventarios</span>
           </NavLink>
         </li>
         <li>
           <NavLink to='/empleado'>
             <img src={empleado} alt='logo empleado' />
-            <span>Empleado</span>
+            <span>Empleados</span>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to='/articulo'>
+            <img src={polizas} alt='logo articulo' />
+            <span>Articulos</span>
           </NavLink>
         </li>
       </ul>

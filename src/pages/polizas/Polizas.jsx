@@ -10,12 +10,22 @@ import EliminarPoliza from './components/modal/EliminarPoliza.jsx'
 import RowTablePoliza from './components/tables/RowTablePoliza.jsx'
 import { PolizasContex } from './contex/polizas.jsx'
 
+import LoadBars from '../../componets/loads/LoadBars.jsx'
+
 import './polizas.css'
 
 const HEADS_GENERAL_POLIZAS = ['ID', 'Empleado', 'Inventario', 'Cantidad', 'Fecha', 'Opciones']
 
+const SinResultados = ({ mensaje }) => {
+  return (
+    <div className='sin-resultados'>
+      <p>{mensaje} </p>
+    </div>
+  )
+}
+
 export default function Polizas () {
-  const { polizas, obtenerPolizas, showAdd, polizaSelected, activedAddPoliza, showDeleteModal, polizaDeleteSelected } = useContext(PolizasContex)
+  const { polizas, obtenerPolizas, showAdd, polizaSelected, activedAddPoliza, showDeleteModal, polizaDeleteSelected, showLoadTable } = useContext(PolizasContex)
 
   const showAddPolizas = () => {
     activedAddPoliza()
@@ -37,7 +47,7 @@ export default function Polizas () {
             )
           })}
         </TableBase>
-        {!polizas && <p>Sin resultados en la busqueda</p>}
+        {!polizas && <SinResultados mensaje='Sin resultados en la busqueda' />}
       </section>
 
       <Agregador handleClickAdd={showAddPolizas} />
@@ -45,6 +55,8 @@ export default function Polizas () {
       {showAdd && <AddPoliza poliza={polizaSelected} />}
 
       {showDeleteModal && <EliminarPoliza identificador={polizaDeleteSelected?.id} />}
+
+      {showLoadTable && <LoadBars />}
 
     </LayoutMenu>
   )
